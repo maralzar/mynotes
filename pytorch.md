@@ -40,3 +40,7 @@ model_q8 = AutoModelForCausalLM.from_pretrained(
 "facebook/opt-350m", device_map='cuda:0', quantization_config=bnb_config_q8
 )
 ```
+8-bit quantization replaces all linear layers except for:
+-  layers with tied (shared) weights
+- the last layer in the model
+- any layer named lm_head
